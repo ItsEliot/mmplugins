@@ -61,15 +61,6 @@ class ClaimThread(commands.Cog):
             recipient_id = match_user_id(ctx.thread.channel.topic)
             recipient = self.bot.get_user(recipient_id) or await self.bot.fetch_user(recipient_id)
 
-            embed = discord.Embed(
-                color=self.bot.main_color,
-                title="Ticket Claimed",
-                description="Please wait as the assigned support agent reviews your case, you will receive a response shortly.",
-                timestamp=ctx.message.created_at,
-            )
-            embed.set_footer(
-                text=f"{ctx.author.name}#{ctx.author.discriminator}", icon_url=ctx.author.display_avatar.url)
-
             description = ""
             if subscribe:
                 if str(ctx.thread.id) not in self.bot.config["subscriptions"]:
